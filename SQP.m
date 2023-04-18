@@ -10,6 +10,10 @@
 function [x_new,f_new,g_f_new,g_c_new,ceq_new,lambda,H_new] = SQP(x,f,g_f,g_c,ceq,H,problem,method,options)
 
     len = length(g_c(1,:));
+    if ~isfield(method.options,'hessian')
+        % warning('Termination tolerance not specified!!! Setting to default: 1e-6')
+        H = eye(size(H));
+    end
     A = [H ,  g_c;
         g_c.',zeros(len)];
     b = -[g_f; ceq];

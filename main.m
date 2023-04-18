@@ -9,18 +9,18 @@ close all
 clear all
 clc
 
-problem.name = 'p1';
-problem.x0 = [2;2];
-problem.n = length(problem.x0);
-x_star = [-1;-1];
-problem.lambda = 1;
-
-
-% problem.name = 'p2';
-% problem.x0 = [-1.8;1.7;1.9;-0.8;-0.8];
+% problem.name = 'p1';
+% problem.x0 = [2;2];
 % problem.n = length(problem.x0);
-% x_star = [-1.71; 1.59; 1.82; -0.763; -0.763];
-% problem.lambda = ones(3,1);
+% x_star = [-1;-1];
+% problem.lambda = 1;
+
+
+problem.name = 'p2';
+problem.x0 = [-1.8;1.7;1.9;-0.8;-0.8];
+problem.n = length(problem.x0);
+x_star = [-1.71; 1.59; 1.82; -0.763; -0.763];
+problem.lambda = ones(3,1);
 
 %
 % set method (minimal requirement: name of method)
@@ -46,6 +46,8 @@ problem.gama = 10;
 % run method and return x^* and f^*
 [x,f,norm_c,k_array,f_array] = optSolverConst_Zhou_Roy(problem, method, options);
 semilogy(k_array,f_array+1e-26);
+%ylim([1e-26,10])
+
 xlabel("Iterations")
 ylabel("f -f*")
-title("problem 1, sqp method")
+title("problem 2, sqp method with I as hessian")
