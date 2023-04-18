@@ -4,7 +4,7 @@
 % Function that runs a chosen algorithm on a chosen problem
 %           Inputs: problem, method, options (structs)
 %           Outputs: final iterate (x) and final function value (f)
-function [x,f,norm_c,k_array,f_array] = optSolverConst_Yi_Shen(problem,method,options)
+function [x,f,norm_c,k_array,f_array] = optSolverConst_Zhou_Roy(problem,method,options)
 
     % set problem, method and options
     [problem] = setProblem(problem);

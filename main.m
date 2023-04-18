@@ -22,9 +22,10 @@ problem.lambda = 1;
 % x_star = [-1.71; 1.59; 1.82; -0.763; -0.763];
 % problem.lambda = ones(3,1);
 
-
+%
 % set method (minimal requirement: name of method)
 method.name = 'SQP';
+%method.name = 'QP';
 % method.name = 'Newton';
 % method.options.step_type = 'Constant';
 method.options.step_type = 'Backtracking';
@@ -43,5 +44,8 @@ problem.mu = 10e-4;
 problem.gama = 10;
 
 % run method and return x^* and f^*
-[x,f,norm_c,k_array,f_array] = optSolverConst_Yi_Shen(problem, method, options);
+[x,f,norm_c,k_array,f_array] = optSolverConst_Zhou_Roy(problem, method, options);
 semilogy(k_array,f_array+1e-26);
+xlabel("Iterations")
+ylabel("f -f*")
+title("problem 1, sqp method")
